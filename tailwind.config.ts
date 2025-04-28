@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -21,7 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'sans': ['Inter', 'sans-serif'],
-				'display': ['Quicksand', 'sans-serif'], // Cambiado a Quicksand para una tipografía más redondeada
+				'display': ['Poppins', 'sans-serif'], // Changed to Poppins from Quicksand
 			},
 			colors: {
 				'purple': {
