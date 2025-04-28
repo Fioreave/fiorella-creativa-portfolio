@@ -21,7 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'sans': ['Inter', 'sans-serif'],
-				'display': ['Space Grotesk', 'sans-serif'],
+				'display': ['Quicksand', 'sans-serif'], // Cambiado a Quicksand para una tipografía más redondeada
 			},
 			colors: {
 				'purple': {
@@ -87,7 +87,11 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'xl': '1rem',
+				'2xl': '1.5rem',
+				'3xl': '2rem',
+				'blob': '60% 40% 30% 70% / 60% 30% 70% 40%',
 			},
 			keyframes: {
 				"accordion-down": {

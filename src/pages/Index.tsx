@@ -8,6 +8,7 @@ import ExperienceSection from '@/components/ExperienceSection';
 import EducationSection from '@/components/EducationSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
           <ContactSection />
         </main>
         <Footer />
+        <Toaster />
       </div>
     </LanguageProvider>
   );

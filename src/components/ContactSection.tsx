@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const ContactSection: React.FC = () => {
   const { t } = useLanguage();
@@ -63,73 +64,31 @@ const ContactSection: React.FC = () => {
   return (
     <section 
       id="contacto" 
-      className="py-20 relative"
+      className="py-20 relative overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        <h2 className="section-heading text-center mb-16">
+        <h2 className="section-heading text-center mb-16 font-display">
           {t('contact.title')}
           <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 w-20 bg-primary rounded-full"></span>
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-display font-semibold mb-6">{t('contact.sendMessage')}</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  {t('contact.formName')}
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Información de contacto a la izquierda */}
+          <div className="order-2 lg:order-1">
+            <div className="flex flex-col items-center lg:items-start">
+              <div className="mb-8 relative w-64 h-64 md:w-80 md:h-80">
+                <div className="absolute top-0 left-0 w-full h-full rounded-blob bg-lavender/20 animate-blob"></div>
+                <div className="absolute top-2 left-2 w-full h-full overflow-hidden rounded-blob">
+                  <img 
+                    src="/lovable-uploads/cf5b7b08-7868-4b5c-bdce-57f79a579643.png" 
+                    alt="Fiorella Avegliano" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  {t('contact.formEmail')}
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  {t('contact.formMessage')}
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full resize-none"
-                />
-              </div>
-              
-              <Button type="submit" className="w-full sm:w-auto">
-                {t('contact.formSubmit')}
-              </Button>
-            </form>
-          </div>
-          
-          <div className="lg:pl-8 flex flex-col justify-between">
-            <div className="mb-8">
-              <div className="glass-card hover-card rounded-xl p-8 h-full">
-                <h3 className="text-2xl font-display font-semibold mb-8">
+
+              <div className="glass-card hover-card rounded-xl p-8 w-full mt-6">
+                <h3 className="text-2xl font-display font-semibold mb-6">
                   {t('contact.title')}
                 </h3>
                 
@@ -159,12 +118,65 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="hidden lg:block relative w-full aspect-square max-w-md">
-              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-lavender rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
-              <div className="relative w-3/4 h-3/4 mx-auto">
-                <div className="w-full h-full bg-gradient-to-br from-lavender to-purple-500 rounded-blob animate-blob"></div>
-              </div>
+          </div>
+          
+          {/* Formulario a la derecha */}
+          <div className="order-1 lg:order-2">
+            <div className="glass-card hover-card rounded-xl p-6 md:p-8">
+              <h3 className="text-2xl font-display font-semibold mb-6">{t('contact.sendMessage')}</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    {t('contact.formName')}
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    {t('contact.formEmail')}
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    {t('contact.formMessage')}
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full resize-none rounded-lg"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full sm:w-auto rounded-full font-display"
+                >
+                  {t('contact.formSubmit')}
+                </Button>
+              </form>
             </div>
           </div>
         </div>
